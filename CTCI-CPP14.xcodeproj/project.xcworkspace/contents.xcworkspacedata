@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:int.xcodeproj">
+      location = "self:/Users/josephlivengood/Desktop/int/CTCI-CPP14.xcodeproj">
    </FileRef>
 </Workspace>

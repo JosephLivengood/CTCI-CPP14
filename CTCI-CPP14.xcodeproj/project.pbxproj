@@ -23,7 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		605CA4992043D73F009DE616 /* int */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = int; sourceTree = BUILT_PRODUCTS_DIR; };
+		605CA4992043D73F009DE616 /* CTCI-CPP14 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CTCI-CPP14"; sourceTree = BUILT_PRODUCTS_DIR; };
 		605CA49C2043D73F009DE616 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		607FEF432048E6BD00B21CAE /* arraysandstrings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = arraysandstrings.cpp; sourceTree = "<group>"; };
 		607FEF452048E6D200B21CAE /* linkedlists.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = linkedlists.cpp; sourceTree = "<group>"; };
@@ -45,7 +45,7 @@
 		605CA4902043D73F009DE616 = {
 			isa = PBXGroup;
 			children = (
-				605CA49B2043D73F009DE616 /* int */,
+				605CA49B2043D73F009DE616 /* CTCI */,
 				605CA49A2043D73F009DE616 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,19 +53,19 @@
 		605CA49A2043D73F009DE616 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				605CA4992043D73F009DE616 /* int */,
+				605CA4992043D73F009DE616 /* CTCI-CPP14 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		605CA49B2043D73F009DE616 /* int */ = {
+		605CA49B2043D73F009DE616 /* CTCI */ = {
 			isa = PBXGroup;
 			children = (
 				605CA49C2043D73F009DE616 /* main.cpp */,
 				607FEF4C2048E7FB00B21CAE /* test */,
 				607FEF4B2048E7B600B21CAE /* src */,
 			);
-			path = int;
+			path = CTCI;
 			sourceTree = "<group>";
 		};
 		607FEF4B2048E7B600B21CAE /* src */ = {
@@ -89,9 +89,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		605CA4982043D73F009DE616 /* int */ = {
+		605CA4982043D73F009DE616 /* CTCI-CPP14 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 605CA4A02043D73F009DE616 /* Build configuration list for PBXNativeTarget "int" */;
+			buildConfigurationList = 605CA4A02043D73F009DE616 /* Build configuration list for PBXNativeTarget "CTCI-CPP14" */;
 			buildPhases = (
 				605CA4952043D73F009DE616 /* Sources */,
 				605CA4962043D73F009DE616 /* Frameworks */,
@@ -101,9 +101,9 @@
 			);
 			dependencies = (
 			);
-			name = int;
+			name = "CTCI-CPP14";
 			productName = int;
-			productReference = 605CA4992043D73F009DE616 /* int */;
+			productReference = 605CA4992043D73F009DE616 /* CTCI-CPP14 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -121,7 +121,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 605CA4942043D73F009DE616 /* Build configuration list for PBXProject "int" */;
+			buildConfigurationList = 605CA4942043D73F009DE616 /* Build configuration list for PBXProject "CTCI-CPP14" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -133,7 +133,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				605CA4982043D73F009DE616 /* int */,
+				605CA4982043D73F009DE616 /* CTCI-CPP14 */,
 			);
 		};
 /* End PBXProject section */
@@ -272,7 +272,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		605CA4942043D73F009DE616 /* Build configuration list for PBXProject "int" */ = {
+		605CA4942043D73F009DE616 /* Build configuration list for PBXProject "CTCI-CPP14" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				605CA49E2043D73F009DE616 /* Debug */,
@@ -281,7 +281,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		605CA4A02043D73F009DE616 /* Build configuration list for PBXNativeTarget "int" */ = {
+		605CA4A02043D73F009DE616 /* Build configuration list for PBXNativeTarget "CTCI-CPP14" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				605CA4A12043D73F009DE616 /* Debug */,
