@@ -20,6 +20,9 @@ public:
   node* get_tail() {
     return tail_;
   }
+  void set_tail(node* node) {
+    tail_ = node;
+  }
   void create_node(int value) {
     node *temp = new node;
     temp->data = value;
@@ -94,4 +97,29 @@ void delete_node(node* n) {
   n->data = after->data;
   n->next = after->next;
   delete(after);
+}
+
+//  2.4
+//  Write code to partition a linked list around a value x, such than
+//  all nodes < x come before all nodes >= to x.
+void partition_around(SinglelyLinkedList** list, int x) {
+  // Should be a given that order must be preserved based on data structure
+  // Two sets for hold lists as we sort before joining, we have a container
+  // so we're going to use it for its purpose and NOT manage nodes our self
+  SinglelyLinkedList less_than;
+  SinglelyLinkedList greater_than;
+  
+  node* curr = (*list)->get_head();
+  while (curr != NULL) {
+    if (curr->data < x) {
+      less_than.create_node(curr->data);
+    } else if (curr->data >= x) {
+      greater_than.create_node(curr->data);
+    }
+    curr = curr->next;
+  }
+  
+  *list = &less_than;
+  (*list)->get_tail()->next = greater_than.get_head();
+  (*list)->set_tail(greater_than.get_tail());
 }
