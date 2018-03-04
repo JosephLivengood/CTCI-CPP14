@@ -47,9 +47,28 @@ void test_partition_around() {
   list->print();
 }
 
+void test_sum_reversed_digits() {
+  std::cout << "-----2.5 sum_reversed_digits-----" << std::endl;
+  SinglelyLinkedList list1;
+  int x[] { 7,1,6 };
+  for(auto& i : x ) {
+    list1.create_node(i);
+  }
+  list1.print();
+  SinglelyLinkedList list2;
+  int y[] { 5,9,2 };
+  for(auto& i : y ) {
+    list2.create_node(i);
+  }
+  list2.print();
+  SinglelyLinkedList result = sum_reversed_digits(&list1, &list2);
+  result.print();
+}
+
 void run_linkedlists_tests() {
   test_delete_dup_nodes();
   test_from_end();
   test_delete_node();
   test_partition_around();
+  test_sum_reversed_digits();
 }

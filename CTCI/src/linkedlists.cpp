@@ -123,3 +123,43 @@ void partition_around(SinglelyLinkedList** list, int x) {
   (*list)->get_tail()->next = greater_than.get_head();
   (*list)->set_tail(greater_than.get_tail());
 }
+
+//  2.5
+//  You have two numbers represented by a linked list, where each node
+//  contains a single digit. The digits are stored in reverse order, such
+//  that the 1's digit is at the head of the list. Write a function that
+//  adds the two numbers and returns the sum as a linked list.
+//
+//  INPUT:  (7->1->6) + (5->9->2). That is, 617+295
+//  OUTPUT: (2->1->9)
+SinglelyLinkedList sum_reversed_digits(SinglelyLinkedList* first, SinglelyLinkedList* second) {
+  SinglelyLinkedList result;
+  
+  node* curr_first = first->get_head();
+  node* curr_second = second->get_head();
+  
+  while (curr_first != NULL || curr_second != NULL ) {
+    static int carry_over = 0;
+    int first = 0;
+    int second = 0;
+    
+    if (curr_first != NULL) {
+      first = curr_first->data;
+      curr_first = curr_first->next;
+    }
+    if (curr_second != NULL) {
+      second = curr_second->data;
+      curr_second = curr_second->next;
+    }
+    
+    int sum = first + second + carry_over;
+    int digit = sum % 10;
+    carry_over = sum/10;
+    
+    result.create_node(digit);
+  }
+  
+  return result;
+}
+
+
