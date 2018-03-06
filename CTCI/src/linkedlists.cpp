@@ -138,8 +138,8 @@ SinglelyLinkedList sum_reversed_digits(SinglelyLinkedList* first, SinglelyLinked
   node* curr_first = first->get_head();
   node* curr_second = second->get_head();
   
-  while (curr_first != NULL || curr_second != NULL ) {
-    static int carry_over = 0;
+  int carry_over = 0;
+  while (curr_first != NULL || curr_second != NULL || carry_over != 0 ) {
     int first = 0;
     int second = 0;
     
@@ -154,7 +154,7 @@ SinglelyLinkedList sum_reversed_digits(SinglelyLinkedList* first, SinglelyLinked
     
     int sum = first + second + carry_over;
     int digit = sum % 10;
-    carry_over = sum/10;
+    carry_over = sum / 10;
     
     result.create_node(digit);
   }
@@ -162,4 +162,32 @@ SinglelyLinkedList sum_reversed_digits(SinglelyLinkedList* first, SinglelyLinked
   return result;
 }
 
+//  2.6
+//  Given a circular (corrupted) linked list, implement an algorithm
+//  which returns the node at the beginning of the loop.
+node* find_first_of_circular(SinglelyLinkedList* list) {
+  node* slow = list->get_head();
+  node* fast = list->get_head();
 
+  while (fast != NULL && fast->next != NULL) {
+    slow = slow->next;
+    fast = fast->next->next;
+    if (slow == fast) {
+      break;
+    }
+  }
+  
+  slow = list->get_head();
+  while (slow != fast) {
+    slow = slow->next;
+    fast = fast->next;
+  }
+  
+  return slow;
+}
+
+//  2.7
+//  Implement a function to check if a linked list is a palindrome.
+bool is_palindrome(SinglelyLinkedList* list) {
+  return true;
+}

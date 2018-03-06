@@ -65,10 +65,34 @@ void test_sum_reversed_digits() {
   result.print();
 }
 
+void test_find_first_of_circular() {
+  std::cout << "-----2.6 find_first_of_circular-----" << std::endl;
+  SinglelyLinkedList list;
+  int x[] { 1,2,6,4,5,6,6,1,4,6,8,4,2,3,5,8,9,2 };
+  for(auto& i : x ) {
+    list.create_node(i);
+  }
+  list.print();
+  // corrupt ourselves to be circular
+  {
+    node* curr = list.get_head();
+    for (int i = 0; i < 4; ++i) {
+      curr = curr->next;
+    }
+    node* last = list.get_tail();
+    last->next = curr;
+  }
+  std::cout << "Last node (2) linked to first (5) in the list at position 4." << std::endl;
+  node* result = find_first_of_circular(&list);
+  std::cout << "First node of circularly corrupted linked list is: " << result->data << std::endl;
+  // list->print(); // Dont try to print a circular corrupt list people
+}
+
 void run_linkedlists_tests() {
   test_delete_dup_nodes();
   test_from_end();
   test_delete_node();
   test_partition_around();
   test_sum_reversed_digits();
+  test_find_first_of_circular();
 }
