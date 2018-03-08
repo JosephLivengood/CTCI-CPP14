@@ -23,7 +23,7 @@ Brief but complete questions are above each solution in the code
 - [x] 2.4 `void partition_around(SinglelyLinkedList**, int)`
 - [x] 2.5 `SinglelyLinkedList sum_revered_digits(SinglelyLinkedList*, SinglelyLinkedList*)`
 - [x] 2.6 `node* find_first_of_circular(SinglelyLinkedList*)`
-- [ ] 2.7 `boolean is_palindrome(SinglelyLinkedList*)`
+- [x] 2.7 `boolean is_palindrome(SinglelyLinkedList*)`
 
 
 

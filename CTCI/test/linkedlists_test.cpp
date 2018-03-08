@@ -88,6 +88,31 @@ void test_find_first_of_circular() {
   // list->print(); // Dont try to print a circular corrupt list people
 }
 
+void test_is_palindrome() {
+  std::cout << "-----2.7 is_palindrome-----" << std::endl;
+  SinglelyLinkedList list;
+  int x[] { 1,2,5,2,6,8 };
+  for(auto& i : x ) {
+    list.create_node(i);
+  }
+  list.print();
+  std::cout << is_palindrome(&list) << std::endl;
+  SinglelyLinkedList list2;
+  int x2[] { 1,2,7,2,1 };
+  for(auto& i : x2 ) {
+    list2.create_node(i);
+  }
+  list2.print();
+  std::cout << is_palindrome(&list2) << std::endl;
+  SinglelyLinkedList list3;
+  int x3[] { 1,2,7,7,2,1 };
+  for(auto& i : x3 ) {
+    list3.create_node(i);
+  }
+  list3.print();
+  std::cout << is_palindrome(&list3) << std::endl;
+}
+
 void run_linkedlists_tests() {
   test_delete_dup_nodes();
   test_from_end();
@@ -95,4 +120,5 @@ void run_linkedlists_tests() {
   test_partition_around();
   test_sum_reversed_digits();
   test_find_first_of_circular();
+  test_is_palindrome();
 }

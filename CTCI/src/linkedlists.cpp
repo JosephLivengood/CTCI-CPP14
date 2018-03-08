@@ -1,5 +1,6 @@
 #include <iostream>
 #include <unordered_set>
+#include <stack>
 
 struct node {
   int data;
@@ -189,5 +190,26 @@ node* find_first_of_circular(SinglelyLinkedList* list) {
 //  2.7
 //  Implement a function to check if a linked list is a palindrome.
 bool is_palindrome(SinglelyLinkedList* list) {
+  // Slow and fast runners to determine mid point
+  node* slow = list->get_head();
+  node* fast = list->get_head();
+  // Elements up to midpoint (where slow runner is when fast finishes*
+  std::stack<int> front_half;
+  while (fast != NULL && fast->next != NULL) {
+    front_half.push(slow->data);
+    slow = slow->next;
+    fast = fast->next->next;
+  }
+  if (fast != NULL) {
+    // Even num elements means the second half starts on the next element
+    slow = slow->next;
+  }
+  while (slow != NULL) {
+    if (slow->data != front_half.top()) {
+      return false;
+    }
+    front_half.pop();
+    slow = slow->next;
+  }
   return true;
 }
