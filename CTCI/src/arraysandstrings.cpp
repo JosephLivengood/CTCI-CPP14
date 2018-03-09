@@ -1,6 +1,20 @@
 #include <cstring>
 #include <string>
 
+//  1.1
+//  Implement an algorithm to determine if a string has all unique
+//  characters. Assume an all lowercase string.
+bool only_unique_chars(std::string *str) {
+  // int is only 16 bits on LP32, need atleast 26 flags
+  long found_flags = 0;
+  for (char& c : *str) {
+    if ((found_flags >> (c-'a') & 1) == 1)
+      return false;
+    found_flags = found_flags ^ (1 << (c-'a'));
+  }
+  return true;
+}
+
 //  1.2
 //  Implement a function void reverse(char* str) in C or C++ which
 //  reverses a null-terminated string.

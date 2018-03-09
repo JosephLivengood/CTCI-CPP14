@@ -2,6 +2,13 @@
 
 #include "../src/arraysandstrings.cpp"
 
+void test_only_unique_chars() {
+  std::cout << "-----1.1 only_unique_chars-----" << std::endl;
+  std::string str = "abcdzxcvwertyuijhgfdsa";
+  std::cout << str << std::endl;
+  std::cout << only_unique_chars(&str) << std::endl;
+}
+
 void test_reverse() {
   std::cout << "-----1.2 reverse-----" << std::endl;
   char str[] = "Hello World";
@@ -64,6 +71,7 @@ void test_zero_intercepts() {
 }
 
 void run_arraysandstrings_tests() {
+  test_only_unique_chars();
   test_reverse();
   test_bad_compression();
   test_rotate_img();
