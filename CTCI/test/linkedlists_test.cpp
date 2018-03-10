@@ -1,4 +1,44 @@
+#include "catch.hpp"
+
 #include "../src/linkedlists.cpp"
+
+TEST_CASE( "Function `delete_dup_nodes` removed duplicate data nodes and preserves order", "[linkedlists][chaptertwo]" ) {
+  SECTION( "Duplicate nodes in middle are removed as expected" ) {
+    int init_seed[] { 1,2,4,3,4,6,9 };
+    int expe_seed[] { 1,2,4,3,6,9 };
+    SinglelyLinkedList init_list { init_seed, 7 };
+    SinglelyLinkedList expe_list { expe_seed, 6 };
+    REQUIRE( init_list.equals(&expe_list) == false );
+    delete_dup_nodes(&init_list);
+    REQUIRE( init_list.equals(&expe_list) );
+  }
+  SECTION( "Duplicate nodes at end are removed as expected" ) {
+    int init_seed[] { 1,2,4,3,4,6,9,2,2 };
+    int expe_seed[] { 1,2,4,3,6,9 };
+    SinglelyLinkedList init_list { init_seed, 9 };
+    SinglelyLinkedList expe_list { expe_seed, 6 };
+    REQUIRE( init_list.equals(&expe_list) == false );
+    delete_dup_nodes(&init_list);
+    REQUIRE( init_list.equals(&expe_list) );
+  }
+  SECTION( "All of one node returns a single noded list" ) {
+    int init_seed[] { 5,5,5 };
+    int expe_seed[] { 5 };
+    SinglelyLinkedList init_list { init_seed, 3 };
+    SinglelyLinkedList expe_list { expe_seed, 1 };
+    REQUIRE( init_list.equals(&expe_list) == false );
+    delete_dup_nodes(&init_list);
+    REQUIRE( init_list.equals(&expe_list) );
+  }
+  SECTION( "Empty list does not throw exception or modify list" ) {
+    SinglelyLinkedList init_list;
+    SinglelyLinkedList expe_list;
+    REQUIRE( init_list.equals(&expe_list) );
+    REQUIRE_NOTHROW( delete_dup_nodes(&init_list) );
+    REQUIRE( init_list.equals(&expe_list) );
+  }
+}
+
 
 void test_delete_dup_nodes() {
   std::cout << "-----2.1 delete_dup_nodes-----" << std::endl;
