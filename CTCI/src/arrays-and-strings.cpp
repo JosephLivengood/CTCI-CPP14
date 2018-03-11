@@ -5,7 +5,7 @@
 //  1.1
 //  Implement an algorithm to determine if a string has all unique
 //  characters. Ignore case.
-bool only_unique_chars(std::string *str) {
+bool OnlyUniqueChars(std::string *str) {
   if (str->empty()) throw std::runtime_error("Empty string is both unique and not unique.");
   // int is only 16 bits on LP32, need atleast 26 flags
   long found_flags = 0;
@@ -20,7 +20,7 @@ bool only_unique_chars(std::string *str) {
 //  1.2
 //  Implement a function void reverse(char* str) in C or C++ which
 //  reverses a null-terminated string.
-void reverse(char *str) {
+void Reverse(char *str) {
   size_t str_length = strlen(str);
   if (str_length == 0) throw std::runtime_error("Empty string cannot be reversed.");
   for (int index = 0; index < str_length/2; index++) {
@@ -32,7 +32,7 @@ void reverse(char *str) {
 //  Implement a method to perform basic string compression using the
 //  counts of repeated characters. (aaabbccccd = a3b2c4d) Assume string
 //  has only upper and lower case letters (a-z).
-std::string bad_compression(std::string str) {
+std::string BadCompression(std::string str) {
   std::string result;
   char last_char = '\0';
   int last_char_count = 0;
@@ -64,7 +64,7 @@ std::string bad_compression(std::string str) {
 //  Given an image represented by an NxN matrix, where each pixel of the
 //  image is 4 bytes, write a method to rotate the image by 90 degrees.
 template<class Pixel>
-void rotate_img(Pixel *img, int n) {
+void RotateImg(Pixel *img, int n) {
   // May be more appropriately named rotate_matrix in our reusable imple
   if (n > 1) {
     const int rings_to_spin = n/2;
@@ -91,7 +91,7 @@ void rotate_img(Pixel *img, int n) {
 //  Write an algorithm such that if an element in an MxN matrix is
 //  0, its entire row and column are set to 0
 template <size_t rows, size_t cols>
-void zero_intercepts(int (&matrix)[rows][cols]) {
+void ZeroIntercepts(int (&matrix)[rows][cols]) {
   // Using this kind of template to avoid needing row/cols passed in
   // means the matrix must be stack living (known compile time)
   bool* row_flags { new bool[rows] };

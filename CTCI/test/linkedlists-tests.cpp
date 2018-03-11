@@ -9,7 +9,7 @@ TEST_CASE( "Function `delete_dup_nodes` removed duplicate data nodes and preserv
     SinglelyLinkedList init_list { init_seed, 7 };
     SinglelyLinkedList expe_list { expe_seed, 6 };
     REQUIRE_FALSE( init_list.equals(&expe_list) );
-    delete_dup_nodes(&init_list);
+    DeleteDupNodes(&init_list);
     REQUIRE( init_list.equals(&expe_list) );
   }
   SECTION( "Duplicate nodes at end are removed as expected" ) {
@@ -18,7 +18,7 @@ TEST_CASE( "Function `delete_dup_nodes` removed duplicate data nodes and preserv
     SinglelyLinkedList init_list { init_seed, 9 };
     SinglelyLinkedList expe_list { expe_seed, 6 };
     REQUIRE_FALSE( init_list.equals(&expe_list) );
-    delete_dup_nodes(&init_list);
+    DeleteDupNodes(&init_list);
     REQUIRE( init_list.equals(&expe_list) );
   }
   SECTION( "All of one node returns a single noded list" ) {
@@ -27,21 +27,21 @@ TEST_CASE( "Function `delete_dup_nodes` removed duplicate data nodes and preserv
     SinglelyLinkedList init_list { init_seed, 3 };
     SinglelyLinkedList expe_list { expe_seed, 1 };
     REQUIRE_FALSE( init_list.equals(&expe_list) );
-    delete_dup_nodes(&init_list);
+    DeleteDupNodes(&init_list);
     REQUIRE( init_list.equals(&expe_list) );
   }
   SECTION( "No duplicate nodes in list does not alter list" ) {
     int seed[] { 1,2,3,4,5,6 };
     SinglelyLinkedList test_list { seed, 6 };
     SinglelyLinkedList cont_list { seed, 6 };
-    delete_dup_nodes(&test_list);
+    DeleteDupNodes(&test_list);
     REQUIRE( test_list.equals(&cont_list) );
   }
   SECTION( "Empty list does not throw exception or modify list" ) {
     SinglelyLinkedList init_list;
     SinglelyLinkedList expe_list;
     REQUIRE( init_list.equals(&expe_list) );
-    REQUIRE_NOTHROW( delete_dup_nodes(&init_list) );
+    REQUIRE_NOTHROW( DeleteDupNodes(&init_list) );
     REQUIRE( init_list.equals(&expe_list) );
   }
 }
@@ -50,23 +50,23 @@ TEST_CASE( "Function `from_end` returns the k'th node from the end of a linked l
   SECTION( "Returns k'th node as expected" ) {
     int seed[] { 1,3,2,4,5,7,6,9 };
     SinglelyLinkedList list { seed, 8 };
-    REQUIRE( from_end(&list, 1)->data == 6 );
-    REQUIRE( from_end(&list, 2)->data == 7 );
-    REQUIRE( from_end(&list, 3)->data == 5 );
-    REQUIRE( from_end(&list, 4)->data == 4 );
-    REQUIRE( from_end(&list, 5)->data == 2 );
+    REQUIRE( FromEnd(&list, 1)->data == 6 );
+    REQUIRE( FromEnd(&list, 2)->data == 7 );
+    REQUIRE( FromEnd(&list, 3)->data == 5 );
+    REQUIRE( FromEnd(&list, 4)->data == 4 );
+    REQUIRE( FromEnd(&list, 5)->data == 2 );
   }
   SECTION( "Returns k'th node as expected when k is 0" ) {
     int seed[] { 1,3,2,4,5,7,6,9 };
     SinglelyLinkedList list { seed, 8 };
-    REQUIRE( from_end(&list, 0)->data == 9 );
+    REQUIRE( FromEnd(&list, 0)->data == 9 );
   }
   SECTION( "Exception is thrown when k is larger than list" ) {
     int seed[] { 1,3,2,4,5,7,6,9 };
     SinglelyLinkedList list { seed, 8 };
     SinglelyLinkedList empty_list;
-    REQUIRE_THROWS_WITH( from_end(&list, 11), "Parameter `k` cannot be larger than the length of the linked list." );
-    REQUIRE_THROWS_WITH( from_end(&empty_list, 1), "Parameter `k` cannot be larger than the length of the linked list." );
+    REQUIRE_THROWS_WITH( FromEnd(&list, 11), "Parameter `k` cannot be larger than the length of the linked list." );
+    REQUIRE_THROWS_WITH( FromEnd(&empty_list, 1), "Parameter `k` cannot be larger than the length of the linked list." );
   }
 }
 
@@ -77,7 +77,7 @@ TEST_CASE( "Function `delete_node` deletes a middle node from whatever list its 
     SinglelyLinkedList init_list { init_seed, 8 };
     SinglelyLinkedList expe_list { expe_seed, 7 };
     node* third_node = init_list.get_head()->next->next;
-    delete_node(third_node);
+    DeleteNode(third_node);
     REQUIRE( init_list.equals(&expe_list) );
   }
   SECTION( "Multiple deletes leaves list as expected" ) {
@@ -86,9 +86,9 @@ TEST_CASE( "Function `delete_node` deletes a middle node from whatever list its 
     SinglelyLinkedList init_list { init_seed, 8 };
     SinglelyLinkedList expe_list { expe_seed, 6 };
     node* third_node = init_list.get_head()->next->next;
-    delete_node(third_node);
+    DeleteNode(third_node);
     third_node = init_list.get_head()->next->next;
-    delete_node(third_node);
+    DeleteNode(third_node);
     REQUIRE( init_list.equals(&expe_list) );
   }
 }
@@ -100,7 +100,7 @@ TEST_CASE( "Function `partition_around` partitions a list around a number preser
     SinglelyLinkedList init_list { init_seed, 5 };
     SinglelyLinkedList expe_list { expe_seed, 5 };
     SinglelyLinkedList* init_list_ptr = &init_list;
-    partition_around(&init_list_ptr, 3);
+    PartitionAround(&init_list_ptr, 3);
     REQUIRE( expe_list.equals(init_list_ptr) );
   }
 }
@@ -113,7 +113,7 @@ TEST_CASE( "Function `sum_reversed_digits` adds two lists of reversed digits", "
     SinglelyLinkedList first_list { first_seed, 3 };
     SinglelyLinkedList second_list { second_seed, 3 };
     SinglelyLinkedList expe_list { expe_seed, 3 };
-    SinglelyLinkedList result = sum_reversed_digits(&first_list, &second_list);
+    SinglelyLinkedList result = SumReversedDigits(&first_list, &second_list);
     REQUIRE( result.equals(&expe_list) );
   }
   SECTION( "Adds uneven lists of digits as expected" ) {
@@ -123,7 +123,7 @@ TEST_CASE( "Function `sum_reversed_digits` adds two lists of reversed digits", "
     SinglelyLinkedList first_list { first_seed, 3 };
     SinglelyLinkedList second_list { second_seed, 1 };
     SinglelyLinkedList expe_list { expe_seed, 3 };
-    SinglelyLinkedList result = sum_reversed_digits(&first_list, &second_list);
+    SinglelyLinkedList result = SumReversedDigits(&first_list, &second_list);
     REQUIRE( result.equals(&expe_list) );
   }
   SECTION( "Adds an empty list to a populated list of digits as expected" ) {
@@ -132,7 +132,7 @@ TEST_CASE( "Function `sum_reversed_digits` adds two lists of reversed digits", "
     SinglelyLinkedList first_list { first_seed, 3 };
     SinglelyLinkedList second_list;
     SinglelyLinkedList expe_list { expe_seed, 3 };
-    SinglelyLinkedList result = sum_reversed_digits(&first_list, &second_list);
+    SinglelyLinkedList result = SumReversedDigits(&first_list, &second_list);
     REQUIRE( result.equals(&expe_list) );
   }
 }
@@ -145,9 +145,9 @@ TEST_CASE( "Function `is_palindrome` returns whether lists data is a palindrome"
     SinglelyLinkedList list1 { seed1, 7 };
     SinglelyLinkedList list2 { seed2, 6 };
     SinglelyLinkedList list3 { seed3, 1 };
-    REQUIRE( is_palindrome(&list1) );
-    REQUIRE( is_palindrome(&list2) );
-    REQUIRE( is_palindrome(&list3) );
+    REQUIRE( IsPalindrome(&list1) );
+    REQUIRE( IsPalindrome(&list2) );
+    REQUIRE( IsPalindrome(&list3) );
   }
   SECTION( "Returns false when expected to be false" ) {
     int seed1[] { 1,2,3,4,5,2,1 }; // odd
@@ -156,9 +156,9 @@ TEST_CASE( "Function `is_palindrome` returns whether lists data is a palindrome"
     SinglelyLinkedList list1 { seed1, 7 };
     SinglelyLinkedList list2 { seed2, 6 };
     SinglelyLinkedList list3 { seed3, 2 };
-    REQUIRE_FALSE( is_palindrome(&list1) );
-    REQUIRE_FALSE( is_palindrome(&list2) );
-    REQUIRE_FALSE( is_palindrome(&list3) );
+    REQUIRE_FALSE( IsPalindrome(&list1) );
+    REQUIRE_FALSE( IsPalindrome(&list2) );
+    REQUIRE_FALSE( IsPalindrome(&list3) );
   }
 }
 
@@ -177,7 +177,7 @@ TEST_CASE( "Function `find_first_of_circular` returns first node of a circularly
       last->next = curr;
       expe_result = curr;
     }
-    node* result = find_first_of_circular(&list);
+    node* result = FindFirstOfCircular(&list);
     REQUIRE( result == expe_result );
   }
 }

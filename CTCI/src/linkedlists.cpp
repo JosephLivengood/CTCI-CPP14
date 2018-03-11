@@ -70,7 +70,7 @@ public:
 
 //  2.1
 //  Write code to remove duplicates from an unsorted linked list.
-void delete_dup_nodes(SinglelyLinkedList* list) {
+void DeleteDupNodes(SinglelyLinkedList* list) {
   // Constant time lookup if value exists with unordered_set (hash lookup)
   std::unordered_set<int> existing_values;
   // 2 pointers nessesary for iteration to be able to delete last two
@@ -92,7 +92,7 @@ void delete_dup_nodes(SinglelyLinkedList* list) {
 
 //  2.2
 //  Write code to find kth last node of a singly linked list
-node* from_end(SinglelyLinkedList* list, int k) {
+node* FromEnd(SinglelyLinkedList* list, int k) {
   node* curr = list->get_head();
   node* offset = NULL;
   int elem_num = 0;
@@ -114,7 +114,7 @@ node* from_end(SinglelyLinkedList* list, int k) {
 //  2.3
 //  Implement an algorithm to delete a node in the middle of a singly
 //  linked list, given only access to that node.
-void delete_node(node* n) {
+void DeleteNode(node* n) {
   if (n->next == NULL) return;
   node* after = n->next;
   n->data = after->data;
@@ -125,7 +125,7 @@ void delete_node(node* n) {
 //  2.4
 //  Write code to partition a linked list around a value x, such than
 //  all nodes < x come before all nodes >= to x.
-void partition_around(SinglelyLinkedList** list, int x) {
+void PartitionAround(SinglelyLinkedList** list, int x) {
   // Should be a given that order must be preserved based on data structure
   // Two sets for hold lists as we sort before joining, we have a container
   // so we're going to use it for its purpose and NOT manage nodes our self
@@ -155,7 +155,7 @@ void partition_around(SinglelyLinkedList** list, int x) {
 //
 //  INPUT:  (7->1->6) + (5->9->2). That is, 617+295
 //  OUTPUT: (2->1->9)
-SinglelyLinkedList sum_reversed_digits(SinglelyLinkedList* first, SinglelyLinkedList* second) {
+SinglelyLinkedList SumReversedDigits(SinglelyLinkedList* first, SinglelyLinkedList* second) {
   SinglelyLinkedList result;
   
   node* curr_first = first->get_head();
@@ -188,7 +188,7 @@ SinglelyLinkedList sum_reversed_digits(SinglelyLinkedList* first, SinglelyLinked
 //  2.6
 //  Given a circular (corrupted) linked list, implement an algorithm
 //  which returns the node at the beginning of the loop.
-node* find_first_of_circular(SinglelyLinkedList* list) {
+node* FindFirstOfCircular(SinglelyLinkedList* list) {
   node* slow = list->get_head();
   node* fast = list->get_head();
 
@@ -211,7 +211,7 @@ node* find_first_of_circular(SinglelyLinkedList* list) {
 
 //  2.7
 //  Implement a function to check if a linked list is a palindrome.
-bool is_palindrome(SinglelyLinkedList* list) {
+bool IsPalindrome(SinglelyLinkedList* list) {
   // Slow and fast runners to determine mid point
   node* slow = list->get_head();
   node* fast = list->get_head();
