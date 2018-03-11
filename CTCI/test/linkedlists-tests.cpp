@@ -2,7 +2,8 @@
 
 #include "../src/linkedlists.cpp"
 
-TEST_CASE( "Function `delete_dup_nodes` removed duplicate data nodes and preserves order", "[linkedlists][chaptertwo]" ) {
+TEST_CASE( "Function `delete_dup_nodes` removed duplicate data nodes and preserves order",
+           "[linkedlists][chaptertwo]" ) {
   SECTION( "Duplicate nodes in middle are removed as expected" ) {
     int init_seed[] { 1,2,4,3,4,6,9 };
     int expe_seed[] { 1,2,4,3,6,9 };
@@ -46,7 +47,8 @@ TEST_CASE( "Function `delete_dup_nodes` removed duplicate data nodes and preserv
   }
 }
 
-TEST_CASE( "Function `from_end` returns the k'th node from the end of a linked list", "[linkedlists][chaptertwo]" ) {
+TEST_CASE( "Function `from_end` returns the k'th node from the end of a linked list",
+           "[linkedlists][chaptertwo]" ) {
   SECTION( "Returns k'th node as expected" ) {
     int seed[] { 1,3,2,4,5,7,6,9 };
     SinglelyLinkedList list { seed, 8 };
@@ -65,12 +67,15 @@ TEST_CASE( "Function `from_end` returns the k'th node from the end of a linked l
     int seed[] { 1,3,2,4,5,7,6,9 };
     SinglelyLinkedList list { seed, 8 };
     SinglelyLinkedList empty_list;
-    REQUIRE_THROWS_WITH( FromEnd(&list, 11), "Parameter `k` cannot be larger than the length of the linked list." );
-    REQUIRE_THROWS_WITH( FromEnd(&empty_list, 1), "Parameter `k` cannot be larger than the length of the linked list." );
+    REQUIRE_THROWS_WITH( FromEnd(&list, 11),
+                         "Parameter `k` cannot be larger than the length of the linked list." );
+    REQUIRE_THROWS_WITH( FromEnd(&empty_list, 1),
+                         "Parameter `k` cannot be larger than the length of the linked list." );
   }
 }
 
-TEST_CASE( "Function `delete_node` deletes a middle node from whatever list its a part of", "[linkedlists][chaptertwo]" ) {
+TEST_CASE( "Function `delete_node` deletes a middle node from whatever list its a part of",
+           "[linkedlists][chaptertwo]" ) {
   SECTION( "Deletes node as expected" ) {
     int init_seed[] { 1,3,2,4,5,7,6,9 };
     int expe_seed[] { 1,3,4,5,7,6,9 };
@@ -93,7 +98,8 @@ TEST_CASE( "Function `delete_node` deletes a middle node from whatever list its 
   }
 }
 
-TEST_CASE( "Function `partition_around` partitions a list around a number preserving order", "[linkedlists][chaptertwo]" ) {
+TEST_CASE( "Function `partition_around` partitions a list around a number preserving order",
+           "[linkedlists][chaptertwo]" ) {
   SECTION( "Partitions node as expected preserving order" ) {
     int init_seed[] { 5,4,3,2,1 };
     int expe_seed[] { 2,1,5,4,3 };
@@ -105,7 +111,8 @@ TEST_CASE( "Function `partition_around` partitions a list around a number preser
   }
 }
 
-TEST_CASE( "Function `sum_reversed_digits` adds two lists of reversed digits", "[linkedlists][chaptertwo]" ) {
+TEST_CASE( "Function `sum_reversed_digits` adds two lists of reversed digits",
+           "[linkedlists][chaptertwo]" ) {
   SECTION( "Adds even lists of digits as expected" ) {
     int first_seed[] { 7,1,6 };
     int second_seed[] { 5,9,2 };
@@ -137,7 +144,8 @@ TEST_CASE( "Function `sum_reversed_digits` adds two lists of reversed digits", "
   }
 }
 
-TEST_CASE( "Function `is_palindrome` returns whether lists data is a palindrome", "[linkedlists][chaptertwo]" ) {
+TEST_CASE( "Function `is_palindrome` returns whether lists data is a palindrome",
+           "[linkedlists][chaptertwo]" ) {
   SECTION( "Returns true when expected to be true" ) {
     int seed1[] { 1,2,3,4,3,2,1 }; // odd
     int seed2[] { 1,2,3,3,2,1 };   // even
@@ -162,7 +170,8 @@ TEST_CASE( "Function `is_palindrome` returns whether lists data is a palindrome"
   }
 }
 
-TEST_CASE( "Function `find_first_of_circular` returns first node of a circularly corrupted linked list", "[linkedlists][chaptertwo]" ) {
+TEST_CASE( "Function `find_first_of_circular` returns first node of a circularly corrupted linked list",
+           "[linkedlists][chaptertwo]" ) {
   SECTION( "Returns true when expected to be true" ) {
     int seed[] { 1,2,6,4,5,6,6,1,4,6,8,4,2,3,5,8,9,2 };
     SinglelyLinkedList list { seed, 18 };

@@ -107,7 +107,8 @@ node* FromEnd(SinglelyLinkedList* list, int k) {
       }
     }
   }
-  if (offset == NULL) throw std::runtime_error("Parameter `k` cannot be larger than the length of the linked list.");
+  if (offset == NULL)
+    throw std::runtime_error("Parameter `k` cannot be larger than the length of the linked list.");
   return offset;
 }
 
@@ -155,17 +156,15 @@ void PartitionAround(SinglelyLinkedList** list, int x) {
 //
 //  INPUT:  (7->1->6) + (5->9->2). That is, 617+295
 //  OUTPUT: (2->1->9)
-SinglelyLinkedList SumReversedDigits(SinglelyLinkedList* first, SinglelyLinkedList* second) {
+SinglelyLinkedList SumReversedDigits(SinglelyLinkedList* first,
+                                     SinglelyLinkedList* second) {
   SinglelyLinkedList result;
-  
   node* curr_first = first->get_head();
   node* curr_second = second->get_head();
-  
   int carry_over = 0;
   while (curr_first != NULL || curr_second != NULL || carry_over != 0 ) {
     int first = 0;
     int second = 0;
-    
     if (curr_first != NULL) {
       first = curr_first->data;
       curr_first = curr_first->next;
@@ -174,11 +173,9 @@ SinglelyLinkedList SumReversedDigits(SinglelyLinkedList* first, SinglelyLinkedLi
       second = curr_second->data;
       curr_second = curr_second->next;
     }
-    
     int sum = first + second + carry_over;
     int digit = sum % 10;
     carry_over = sum / 10;
-    
     result.create_node(digit);
   }
   

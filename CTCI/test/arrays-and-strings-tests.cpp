@@ -2,7 +2,8 @@
 
 #include "../src/arrays-and-strings.cpp"
 
-TEST_CASE( "Function `only_unique_chars` returns true if a string has only unique characters", "[arraysandstrings][chapterone]" ) {
+TEST_CASE( "Function `only_unique_chars` returns true if a string has only unique characters",
+           "[arraysandstrings][chapterone]" ) {
   SECTION( "All unique chars present returns true" ) {
     std::string str { "abcdefghijkl" };
     REQUIRE( OnlyUniqueChars(&str) );
@@ -17,11 +18,13 @@ TEST_CASE( "Function `only_unique_chars` returns true if a string has only uniqu
   }
   SECTION( "Empty string throws exception" ) {
     std::string str;
-    REQUIRE_THROWS_WITH( OnlyUniqueChars(&str), "Empty string is both unique and not unique." );
+    REQUIRE_THROWS_WITH( OnlyUniqueChars(&str),
+                         "Empty string is both unique and not unique." );
   }
 }
 
-TEST_CASE( "Function `reverse` reverses the characters of a C-style string in place", "[arraysandstrings][chapterone]" ) {
+TEST_CASE( "Function `reverse` reverses the characters of a C-style string in place",
+           "[arraysandstrings][chapterone]" ) {
   SECTION( "Normal string reverses as expected" ) {
     char forwards[] = "Hello World";
     char reversed[] = "dlroW olleH";
@@ -30,11 +33,13 @@ TEST_CASE( "Function `reverse` reverses the characters of a C-style string in pl
   }
   SECTION( "Empty string throws exception" ) {
     char forwards[0];
-    REQUIRE_THROWS_WITH( Reverse(forwards), "Empty string cannot be reversed." );
+    REQUIRE_THROWS_WITH( Reverse(forwards),
+                         "Empty string cannot be reversed." );
   }
 }
 
-TEST_CASE( "Function `bad_compression` performs a bad compression", "[arraysandstrings][chapterone]" ) {
+TEST_CASE( "Function `bad_compression` performs a bad compression",
+           "[arraysandstrings][chapterone]" ) {
   SECTION( "Normal string compresses as expected" ) {
     std::string uncompressed = "aabbbcc";
     std::string act_compressed = BadCompression(uncompressed);
@@ -58,7 +63,8 @@ TEST_CASE( "Function `bad_compression` performs a bad compression", "[arraysands
   }
 }
 
-TEST_CASE( "Function `rotate_img` rotates a matrix 90degrees", "[arraysandstrings][chapterone]" ) {
+TEST_CASE( "Function `rotate_img` rotates a matrix 90degrees",
+           "[arraysandstrings][chapterone]" ) {
   SECTION( "Small odd matrix is rotated as expected" ) {
     int original_image[3][3] = {
       {1,1,2},
@@ -136,7 +142,8 @@ TEST_CASE( "Function `rotate_img` rotates a matrix 90degrees", "[arraysandstring
   }
 }
 
-TEST_CASE( "Function `zero_intercepts` zeros rows and cols which contain a zero", "[arraysandstrings][chapterone]" ) {
+TEST_CASE( "Function `zero_intercepts` zeros rows and cols which contain a zero",
+           "[arraysandstrings][chapterone]" ) {
   SECTION( "Intercepts are zeroed as expected" ) {
     int matrix[6][6] = {
       {1,2,3,4,5,6},
