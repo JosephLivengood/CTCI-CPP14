@@ -30,9 +30,7 @@ Brief but complete questions are above each solution in the code
 Build however you feel comfortable, this is meant more as a web reference. If using xcode but not the unignored project settings, ensure only main.cpp is chose as a compile sourse in the build phases.
 
 ## Testing
-Currently, 'tests' are user handled by means of logging and checking to see if solution is working.
-
-**Implementation of testing framework to unit test properly with multiple cases WIP**
+Catch2 is used for testing in TDD style. Catch2's main is used, compiling/executing the problem will automatically run the test suite. (Tip: run with -s to should every test case and its result in the console );
 
 ## Folder structure
 

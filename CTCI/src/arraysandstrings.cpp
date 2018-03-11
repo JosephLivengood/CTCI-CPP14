@@ -1,16 +1,18 @@
 #include <cstring>
 #include <string>
+#include <exception>
 
 //  1.1
 //  Implement an algorithm to determine if a string has all unique
-//  characters. Assume an all lowercase string.
+//  characters. Ignore case.
 bool only_unique_chars(std::string *str) {
+  if (str->empty()) throw std::runtime_error("Empty string is both unique and not unique.");
   // int is only 16 bits on LP32, need atleast 26 flags
   long found_flags = 0;
   for (char& c : *str) {
-    if ((found_flags >> (c-'a') & 1) == 1)
+    if ((found_flags >> ((c-'A') % 32) & 1) == 1)
       return false;
-    found_flags = found_flags ^ (1 << (c-'a'));
+    found_flags = found_flags ^ (1 << ((c-'A') % 32));
   }
   return true;
 }
@@ -20,6 +22,7 @@ bool only_unique_chars(std::string *str) {
 //  reverses a null-terminated string.
 void reverse(char *str) {
   size_t str_length = strlen(str);
+  if (str_length == 0) throw std::runtime_error("Empty string cannot be reversed.");
   for (int index = 0; index < str_length/2; index++) {
     std::swap(str[index], str[str_length-index-1]);
   }
@@ -30,16 +33,19 @@ void reverse(char *str) {
 //  counts of repeated characters. (aaabbccccd = a3b2c4d) Assume string
 //  has only upper and lower case letters (a-z).
 std::string bad_compression(std::string str) {
-  std::string result = "";
+  std::string result;
   char last_char = '\0';
   int last_char_count = 0;
   // For each char in string, count if its the same as the last, otherwise
   // append the count of the most recent string of common chars.
   for (char& c : str) {
+    // validate char, function parameters are strictly letters
+    if (c < 65 || c > 122) throw std::runtime_error("Invalid character in string.");
     if (last_char == c) {
       last_char_count++;
     } else {
-      result += last_char;
+      if (last_char != '\0')
+        result += last_char;
       if (last_char_count > 1)
         result += std::to_string(last_char_count);
       last_char = c;

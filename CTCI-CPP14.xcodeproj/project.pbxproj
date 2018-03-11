@@ -29,6 +29,7 @@
 		607FEF452048E6D200B21CAE /* linkedlists.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = linkedlists.cpp; sourceTree = "<group>"; };
 		607FEF4D2048E82700B21CAE /* arraysandstrings_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = arraysandstrings_test.cpp; sourceTree = "<group>"; };
 		607FEF4F2048E84700B21CAE /* linkedlists_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = linkedlists_test.cpp; sourceTree = "<group>"; };
+		6083E8AC205233C60074570B /* catch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +83,7 @@
 			children = (
 				607FEF4D2048E82700B21CAE /* arraysandstrings_test.cpp */,
 				607FEF4F2048E84700B21CAE /* linkedlists_test.cpp */,
+				6083E8AC205233C60074570B /* catch.hpp */,
 			);
 			path = test;
 			sourceTree = "<group>";

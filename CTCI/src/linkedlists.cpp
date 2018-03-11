@@ -15,6 +15,13 @@ public:
     head_ = nullptr;
     tail_ = nullptr;
   }
+  SinglelyLinkedList(int seed[], size_t len) {
+    head_ = nullptr;
+    tail_ = nullptr;
+    for(size_t i = 0; i < len; ++i) {
+      create_node(seed[i]);
+    }
+  }
   node* get_head() {
     return head_;
   }
@@ -43,13 +50,27 @@ public:
       std::cout << node->data << " ";
       node = node->next;
     }
-    std::cout << std::endl;
+    std::cout << "end" << std::endl;
+  }
+  bool equals(SinglelyLinkedList* other) {
+    node* curr = get_head();
+    node* curr_other = other->get_head();
+    while (curr != NULL && curr_other != NULL) {
+      if (curr->data != curr_other->data) {
+        return false;
+      }
+      curr = curr->next;
+      curr_other = curr_other->next;
+    }
+    if (curr != NULL || curr_other != NULL)
+      return false;
+    return true;
   }
 };
 
 //  2.1
 //  Write code to remove duplicates from an unsorted linked list.
-void delete_dup_nodes(SinglelyLinkedList *list) {
+void delete_dup_nodes(SinglelyLinkedList* list) {
   // Constant time lookup if value exists with unordered_set (hash lookup)
   std::unordered_set<int> existing_values;
   // 2 pointers nessesary for iteration to be able to delete last two
@@ -74,9 +95,9 @@ void delete_dup_nodes(SinglelyLinkedList *list) {
 node* from_end(SinglelyLinkedList* list, int k) {
   node* curr = list->get_head();
   node* offset = NULL;
+  int elem_num = 0;
   while (curr != NULL) {
     curr = curr->next;
-    static int elem_num = 0;
     elem_num++;
     if (elem_num > k) {
       if (offset == NULL) {
@@ -86,6 +107,7 @@ node* from_end(SinglelyLinkedList* list, int k) {
       }
     }
   }
+  if (offset == NULL) throw std::runtime_error("Parameter `k` cannot be larger than the length of the linked list.");
   return offset;
 }
 
