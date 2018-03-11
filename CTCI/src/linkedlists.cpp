@@ -95,9 +95,9 @@ void delete_dup_nodes(SinglelyLinkedList* list) {
 node* from_end(SinglelyLinkedList* list, int k) {
   node* curr = list->get_head();
   node* offset = NULL;
+  int elem_num = 0;
   while (curr != NULL) {
     curr = curr->next;
-    static int elem_num = 0;
     elem_num++;
     if (elem_num > k) {
       if (offset == NULL) {
@@ -107,6 +107,7 @@ node* from_end(SinglelyLinkedList* list, int k) {
       }
     }
   }
+  if (offset == NULL) throw std::runtime_error("Parameter `k` cannot be larger than the length of the linked list.");
   return offset;
 }
 
