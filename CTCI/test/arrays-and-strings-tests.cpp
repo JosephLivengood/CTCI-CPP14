@@ -53,7 +53,7 @@ TEST_CASE( "Function `bad_compression` performs a bad compression",
       "iiihsnwnwwwjfbche",
       "qwertyqwertyqqwweerrttyy"
     };
-    for (const std::string& str : test_cases) {
+    for (const std::string &str : test_cases) {
       REQUIRE( BadCompression(str).length() <= str.length() );
     }
   }

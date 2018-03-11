@@ -81,7 +81,7 @@ TEST_CASE( "Function `delete_node` deletes a middle node from whatever list its 
     int expe_seed[] { 1,3,4,5,7,6,9 };
     SinglelyLinkedList init_list { init_seed, 8 };
     SinglelyLinkedList expe_list { expe_seed, 7 };
-    node* third_node = init_list.get_head()->next->next;
+    node *third_node = init_list.get_head()->next->next;
     DeleteNode(third_node);
     REQUIRE( init_list.equals(&expe_list) );
   }
@@ -90,7 +90,7 @@ TEST_CASE( "Function `delete_node` deletes a middle node from whatever list its 
     int expe_seed[] { 1,3,5,7,6,9 };
     SinglelyLinkedList init_list { init_seed, 8 };
     SinglelyLinkedList expe_list { expe_seed, 6 };
-    node* third_node = init_list.get_head()->next->next;
+    node *third_node = init_list.get_head()->next->next;
     DeleteNode(third_node);
     third_node = init_list.get_head()->next->next;
     DeleteNode(third_node);
@@ -105,7 +105,7 @@ TEST_CASE( "Function `partition_around` partitions a list around a number preser
     int expe_seed[] { 2,1,5,4,3 };
     SinglelyLinkedList init_list { init_seed, 5 };
     SinglelyLinkedList expe_list { expe_seed, 5 };
-    SinglelyLinkedList* init_list_ptr = &init_list;
+    SinglelyLinkedList *init_list_ptr = &init_list;
     PartitionAround(&init_list_ptr, 3);
     REQUIRE( expe_list.equals(init_list_ptr) );
   }
@@ -175,18 +175,18 @@ TEST_CASE( "Function `find_first_of_circular` returns first node of a circularly
   SECTION( "Returns true when expected to be true" ) {
     int seed[] { 1,2,6,4,5,6,6,1,4,6,8,4,2,3,5,8,9,2 };
     SinglelyLinkedList list { seed, 18 };
-    node* expe_result;
+    node *expe_result;
     {
       // corrupt our list
-      node* curr = list.get_head();
+      node *curr = list.get_head();
       for (int i = 0; i < 4; ++i) {
         curr = curr->next;
       }
-      node* last = list.get_tail();
+      node *last = list.get_tail();
       last->next = curr;
       expe_result = curr;
     }
-    node* result = FindFirstOfCircular(&list);
+    node *result = FindFirstOfCircular(&list);
     REQUIRE( result == expe_result );
   }
 }

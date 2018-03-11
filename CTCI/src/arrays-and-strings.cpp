@@ -10,7 +10,7 @@ bool OnlyUniqueChars(std::string *str) {
     throw std::runtime_error("Empty string is both unique and not unique.");
   // int is only 16 bits on LP32, need atleast 26 flags
   long found_flags = 0;
-  for (char& c : *str) {
+  for (char &c : *str) {
     if ((found_flags >> ((c-'A') % 32) & 1) == 1)
       return false;
     found_flags = found_flags ^ (1 << ((c-'A') % 32));
@@ -19,7 +19,7 @@ bool OnlyUniqueChars(std::string *str) {
 }
 
 //  1.2
-//  Implement a function void reverse(char* str) in C or C++ which
+//  Implement a function void reverse(char *str) in C or C++ which
 //  reverses a null-terminated string.
 void Reverse(char *str) {
   size_t str_length = strlen(str);
@@ -40,7 +40,7 @@ std::string BadCompression(std::string str) {
   int last_char_count = 0;
   // For each char in string, count if its the same as the last, otherwise
   // append the count of the most recent string of common chars.
-  for (char& c : str) {
+  for (char &c : str) {
     // validate char, function parameters are strictly letters
     if (c < 65 || c > 122)
       throw std::runtime_error("Invalid character in string.");
@@ -97,8 +97,8 @@ template <size_t rows, size_t cols>
 void ZeroIntercepts(int (&matrix)[rows][cols]) {
   // Using this kind of template to avoid needing row/cols passed in
   // means the matrix must be stack living (known compile time)
-  bool* row_flags { new bool[rows] };
-  bool* col_flags { new bool[cols] };
+  bool *row_flags { new bool[rows] };
+  bool *col_flags { new bool[cols] };
   for (int row = 0; row < rows; ++row) {
     for (int col = 0; col < cols; ++col) {
       if (matrix[row][col] == 0) {

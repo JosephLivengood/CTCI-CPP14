@@ -22,13 +22,13 @@ public:
       create_node(seed[i]);
     }
   }
-  node* get_head() {
+  node *get_head() {
     return head_;
   }
-  node* get_tail() {
+  node *get_tail() {
     return tail_;
   }
-  void set_tail(node* node) {
+  void set_tail(node *node) {
     tail_ = node;
   }
   void create_node(int value) {
@@ -52,9 +52,9 @@ public:
     }
     std::cout << "end" << std::endl;
   }
-  bool equals(SinglelyLinkedList* other) {
-    node* curr = get_head();
-    node* curr_other = other->get_head();
+  bool equals(SinglelyLinkedList *other) {
+    node *curr = get_head();
+    node *curr_other = other->get_head();
     while (curr != NULL && curr_other != NULL) {
       if (curr->data != curr_other->data) {
         return false;
@@ -70,7 +70,7 @@ public:
 
 //  2.1
 //  Write code to remove duplicates from an unsorted linked list.
-void DeleteDupNodes(SinglelyLinkedList* list) {
+void DeleteDupNodes(SinglelyLinkedList *list) {
   // Constant time lookup if value exists with unordered_set (hash lookup)
   std::unordered_set<int> existing_values;
   // 2 pointers nessesary for iteration to be able to delete last two
@@ -92,9 +92,9 @@ void DeleteDupNodes(SinglelyLinkedList* list) {
 
 //  2.2
 //  Write code to find kth last node of a singly linked list
-node* FromEnd(SinglelyLinkedList* list, int k) {
-  node* curr = list->get_head();
-  node* offset = NULL;
+node *FromEnd(SinglelyLinkedList *list, int k) {
+  node *curr = list->get_head();
+  node *offset = NULL;
   int elem_num = 0;
   while (curr != NULL) {
     curr = curr->next;
@@ -115,9 +115,9 @@ node* FromEnd(SinglelyLinkedList* list, int k) {
 //  2.3
 //  Implement an algorithm to delete a node in the middle of a singly
 //  linked list, given only access to that node.
-void DeleteNode(node* n) {
+void DeleteNode(node *n) {
   if (n->next == NULL) return;
-  node* after = n->next;
+  node *after = n->next;
   n->data = after->data;
   n->next = after->next;
   delete(after);
@@ -126,14 +126,14 @@ void DeleteNode(node* n) {
 //  2.4
 //  Write code to partition a linked list around a value x, such than
 //  all nodes < x come before all nodes >= to x.
-void PartitionAround(SinglelyLinkedList** list, int x) {
+void PartitionAround(SinglelyLinkedList **list, int x) {
   // Should be a given that order must be preserved based on data structure
   // Two sets for hold lists as we sort before joining, we have a container
   // so we're going to use it for its purpose and NOT manage nodes our self
   SinglelyLinkedList less_than;
   SinglelyLinkedList greater_than;
   
-  node* curr = (*list)->get_head();
+  node *curr = (*list)->get_head();
   while (curr != NULL) {
     if (curr->data < x) {
       less_than.create_node(curr->data);
@@ -156,11 +156,11 @@ void PartitionAround(SinglelyLinkedList** list, int x) {
 //
 //  INPUT:  (7->1->6) + (5->9->2). That is, 617+295
 //  OUTPUT: (2->1->9)
-SinglelyLinkedList SumReversedDigits(SinglelyLinkedList* first,
-                                     SinglelyLinkedList* second) {
+SinglelyLinkedList SumReversedDigits(SinglelyLinkedList *first,
+                                     SinglelyLinkedList *second) {
   SinglelyLinkedList result;
-  node* curr_first = first->get_head();
-  node* curr_second = second->get_head();
+  node *curr_first = first->get_head();
+  node *curr_second = second->get_head();
   int carry_over = 0;
   while (curr_first != NULL || curr_second != NULL || carry_over != 0 ) {
     int first = 0;
@@ -185,9 +185,9 @@ SinglelyLinkedList SumReversedDigits(SinglelyLinkedList* first,
 //  2.6
 //  Given a circular (corrupted) linked list, implement an algorithm
 //  which returns the node at the beginning of the loop.
-node* FindFirstOfCircular(SinglelyLinkedList* list) {
-  node* slow = list->get_head();
-  node* fast = list->get_head();
+node *FindFirstOfCircular(SinglelyLinkedList *list) {
+  node *slow = list->get_head();
+  node *fast = list->get_head();
 
   while (fast != NULL && fast->next != NULL) {
     slow = slow->next;
@@ -208,10 +208,10 @@ node* FindFirstOfCircular(SinglelyLinkedList* list) {
 
 //  2.7
 //  Implement a function to check if a linked list is a palindrome.
-bool IsPalindrome(SinglelyLinkedList* list) {
+bool IsPalindrome(SinglelyLinkedList *list) {
   // Slow and fast runners to determine mid point
-  node* slow = list->get_head();
-  node* fast = list->get_head();
+  node *slow = list->get_head();
+  node *fast = list->get_head();
   // Elements up to midpoint (where slow runner is when fast finishes*
   std::stack<int> front_half;
   while (fast != NULL && fast->next != NULL) {
