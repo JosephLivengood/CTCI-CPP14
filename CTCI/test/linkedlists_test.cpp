@@ -105,78 +105,79 @@ TEST_CASE( "Function `partition_around` partitions a list around a number preser
   }
 }
 
-
-
-
-
-void test_sum_reversed_digits() {
-  std::cout << "-----2.5 sum_reversed_digits-----" << std::endl;
-  SinglelyLinkedList list1;
-  int x[] { 7,1,6 };
-  for(auto& i : x ) {
-    list1.create_node(i);
+TEST_CASE( "Function `sum_reversed_digits` adds two lists of reversed digits", "[linkedlists][chaptertwo]" ) {
+  SECTION( "Adds even lists of digits as expected" ) {
+    int first_seed[] { 7,1,6 };
+    int second_seed[] { 5,9,2 };
+    int expe_seed[] { 2,1,9 };
+    SinglelyLinkedList first_list { first_seed, 3 };
+    SinglelyLinkedList second_list { second_seed, 3 };
+    SinglelyLinkedList expe_list { expe_seed, 3 };
+    SinglelyLinkedList result = sum_reversed_digits(&first_list, &second_list);
+    REQUIRE( result.equals(&expe_list) );
   }
-  list1.print();
-  SinglelyLinkedList list2;
-  int y[] { 5,9,2 };
-  for(auto& i : y ) {
-    list2.create_node(i);
+  SECTION( "Adds uneven lists of digits as expected" ) {
+    int first_seed[] { 7,1,6 };
+    int second_seed[] { 5 };
+    int expe_seed[] { 2,2,6 };
+    SinglelyLinkedList first_list { first_seed, 3 };
+    SinglelyLinkedList second_list { second_seed, 1 };
+    SinglelyLinkedList expe_list { expe_seed, 3 };
+    SinglelyLinkedList result = sum_reversed_digits(&first_list, &second_list);
+    REQUIRE( result.equals(&expe_list) );
   }
-  list2.print();
-  SinglelyLinkedList result = sum_reversed_digits(&list1, &list2);
-  result.print();
+  SECTION( "Adds an empty list to a populated list of digits as expected" ) {
+    int first_seed[] { 7,1,6 };
+    int expe_seed[] { 7,1,6 };
+    SinglelyLinkedList first_list { first_seed, 3 };
+    SinglelyLinkedList second_list;
+    SinglelyLinkedList expe_list { expe_seed, 3 };
+    SinglelyLinkedList result = sum_reversed_digits(&first_list, &second_list);
+    REQUIRE( result.equals(&expe_list) );
+  }
 }
 
-void test_find_first_of_circular() {
-  std::cout << "-----2.6 find_first_of_circular-----" << std::endl;
-  SinglelyLinkedList list;
-  int x[] { 1,2,6,4,5,6,6,1,4,6,8,4,2,3,5,8,9,2 };
-  for(auto& i : x ) {
-    list.create_node(i);
+TEST_CASE( "Function `is_palindrome` returns whether lists data is a palindrome", "[linkedlists][chaptertwo]" ) {
+  SECTION( "Returns true when expected to be true" ) {
+    int seed1[] { 1,2,3,4,3,2,1 }; // odd
+    int seed2[] { 1,2,3,3,2,1 };   // even
+    int seed3[] { 1 };             // lone
+    SinglelyLinkedList list1 { seed1, 7 };
+    SinglelyLinkedList list2 { seed2, 6 };
+    SinglelyLinkedList list3 { seed3, 1 };
+    REQUIRE( is_palindrome(&list1) );
+    REQUIRE( is_palindrome(&list2) );
+    REQUIRE( is_palindrome(&list3) );
   }
-  list.print();
-  // corrupt ourselves to be circular
-  {
-    node* curr = list.get_head();
-    for (int i = 0; i < 4; ++i) {
-      curr = curr->next;
+  SECTION( "Returns false when expected to be false" ) {
+    int seed1[] { 1,2,3,4,5,2,1 }; // odd
+    int seed2[] { 1,2,3,3,2,2 };   // even
+    int seed3[] { 9,8 };           // small
+    SinglelyLinkedList list1 { seed1, 7 };
+    SinglelyLinkedList list2 { seed2, 6 };
+    SinglelyLinkedList list3 { seed3, 2 };
+    REQUIRE_FALSE( is_palindrome(&list1) );
+    REQUIRE_FALSE( is_palindrome(&list2) );
+    REQUIRE_FALSE( is_palindrome(&list3) );
+  }
+}
+
+TEST_CASE( "Function `find_first_of_circular` returns first node of a circularly corrupted linked list", "[linkedlists][chaptertwo]" ) {
+  SECTION( "Returns true when expected to be true" ) {
+    int seed[] { 1,2,6,4,5,6,6,1,4,6,8,4,2,3,5,8,9,2 };
+    SinglelyLinkedList list { seed, 18 };
+    node* expe_result;
+    {
+      // corrupt our list
+      node* curr = list.get_head();
+      for (int i = 0; i < 4; ++i) {
+        curr = curr->next;
+      }
+      node* last = list.get_tail();
+      last->next = curr;
+      expe_result = curr;
     }
-    node* last = list.get_tail();
-    last->next = curr;
+    node* result = find_first_of_circular(&list);
+    REQUIRE( result == expe_result );
   }
-  std::cout << "Last node (2) linked to first (5) in the list at position 4." << std::endl;
-  node* result = find_first_of_circular(&list);
-  std::cout << "First node of circularly corrupted linked list is: " << result->data << std::endl;
-  // list->print(); // Dont try to print a circular corrupt list people
-}
-
-void test_is_palindrome() {
-  std::cout << "-----2.7 is_palindrome-----" << std::endl;
-  SinglelyLinkedList list;
-  int x[] { 1,2,5,2,6,8 };
-  for(auto& i : x ) {
-    list.create_node(i);
-  }
-  list.print();
-  std::cout << is_palindrome(&list) << std::endl;
-  SinglelyLinkedList list2;
-  int x2[] { 1,2,7,2,1 };
-  for(auto& i : x2 ) {
-    list2.create_node(i);
-  }
-  list2.print();
-  std::cout << is_palindrome(&list2) << std::endl;
-  SinglelyLinkedList list3;
-  int x3[] { 1,2,7,7,2,1 };
-  for(auto& i : x3 ) {
-    list3.create_node(i);
-  }
-  list3.print();
-  std::cout << is_palindrome(&list3) << std::endl;
-}
-
-void run_linkedlists_tests() {
-  test_sum_reversed_digits();
-  test_find_first_of_circular();
-  test_is_palindrome();
 }
