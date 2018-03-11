@@ -1,8 +1,6 @@
-#include <iostream>
-
 #include "catch.hpp"
 
-#include "../src/arraysandstrings.cpp"
+#include "../src/arrays-and-strings.cpp"
 
 TEST_CASE( "Function `only_unique_chars` returns true if a string has only unique characters", "[arraysandstrings][chapterone]" ) {
   SECTION( "All unique chars present returns true" ) {
