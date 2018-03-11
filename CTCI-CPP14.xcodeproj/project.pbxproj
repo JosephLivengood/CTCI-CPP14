@@ -25,10 +25,10 @@
 /* Begin PBXFileReference section */
 		605CA4992043D73F009DE616 /* CTCI-CPP14 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "CTCI-CPP14"; sourceTree = BUILT_PRODUCTS_DIR; };
 		605CA49C2043D73F009DE616 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		607FEF432048E6BD00B21CAE /* arraysandstrings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = arraysandstrings.cpp; sourceTree = "<group>"; };
+		607FEF432048E6BD00B21CAE /* arrays-and-strings.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "arrays-and-strings.cpp"; sourceTree = "<group>"; };
 		607FEF452048E6D200B21CAE /* linkedlists.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = linkedlists.cpp; sourceTree = "<group>"; };
-		607FEF4D2048E82700B21CAE /* arraysandstrings_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = arraysandstrings_test.cpp; sourceTree = "<group>"; };
-		607FEF4F2048E84700B21CAE /* linkedlists_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = linkedlists_test.cpp; sourceTree = "<group>"; };
+		607FEF4D2048E82700B21CAE /* arrays-and-strings-tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "arrays-and-strings-tests.cpp"; sourceTree = "<group>"; };
+		607FEF4F2048E84700B21CAE /* linkedlists-tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "linkedlists-tests.cpp"; sourceTree = "<group>"; };
 		6083E8AC205233C60074570B /* catch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,7 +72,7 @@
 		607FEF4B2048E7B600B21CAE /* src */ = {
 			isa = PBXGroup;
 			children = (
-				607FEF432048E6BD00B21CAE /* arraysandstrings.cpp */,
+				607FEF432048E6BD00B21CAE /* arrays-and-strings.cpp */,
 				607FEF452048E6D200B21CAE /* linkedlists.cpp */,
 			);
 			path = src;
@@ -81,8 +81,8 @@
 		607FEF4C2048E7FB00B21CAE /* test */ = {
 			isa = PBXGroup;
 			children = (
-				607FEF4D2048E82700B21CAE /* arraysandstrings_test.cpp */,
-				607FEF4F2048E84700B21CAE /* linkedlists_test.cpp */,
+				607FEF4D2048E82700B21CAE /* arrays-and-strings-tests.cpp */,
+				607FEF4F2048E84700B21CAE /* linkedlists-tests.cpp */,
 				6083E8AC205233C60074570B /* catch.hpp */,
 			);
 			path = test;

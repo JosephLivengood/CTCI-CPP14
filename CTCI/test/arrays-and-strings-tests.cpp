@@ -1,45 +1,48 @@
-#include <iostream>
-
 #include "catch.hpp"
 
-#include "../src/arraysandstrings.cpp"
+#include "../src/arrays-and-strings.cpp"
 
-TEST_CASE( "Function `only_unique_chars` returns true if a string has only unique characters", "[arraysandstrings][chapterone]" ) {
+TEST_CASE( "Function `only_unique_chars` returns true if a string has only unique characters",
+           "[arraysandstrings][chapterone]" ) {
   SECTION( "All unique chars present returns true" ) {
     std::string str { "abcdefghijkl" };
-    REQUIRE( only_unique_chars(&str) );
+    REQUIRE( OnlyUniqueChars(&str) );
   }
   SECTION( "Duplicate chars present returns false" ) {
     std::string str { "abcdefabcxef" };
-    REQUIRE_FALSE( only_unique_chars(&str) );
+    REQUIRE_FALSE( OnlyUniqueChars(&str) );
   }
   SECTION( "Duplicate mixed-case chars present returns false" ) {
     std::string str { "ABCabc" };
-    REQUIRE_FALSE( only_unique_chars(&str) );
+    REQUIRE_FALSE( OnlyUniqueChars(&str) );
   }
   SECTION( "Empty string throws exception" ) {
     std::string str;
-    REQUIRE_THROWS_WITH( only_unique_chars(&str), "Empty string is both unique and not unique." );
+    REQUIRE_THROWS_WITH( OnlyUniqueChars(&str),
+                         "Empty string is both unique and not unique." );
   }
 }
 
-TEST_CASE( "Function `reverse` reverses the characters of a C-style string in place", "[arraysandstrings][chapterone]" ) {
+TEST_CASE( "Function `reverse` reverses the characters of a C-style string in place",
+           "[arraysandstrings][chapterone]" ) {
   SECTION( "Normal string reverses as expected" ) {
     char forwards[] = "Hello World";
     char reversed[] = "dlroW olleH";
-    reverse(forwards);
+    Reverse(forwards);
     REQUIRE( strcmp(forwards,reversed) == 0 );
   }
   SECTION( "Empty string throws exception" ) {
     char forwards[0];
-    REQUIRE_THROWS_WITH( reverse(forwards), "Empty string cannot be reversed." );
+    REQUIRE_THROWS_WITH( Reverse(forwards),
+                         "Empty string cannot be reversed." );
   }
 }
 
-TEST_CASE( "Function `bad_compression` performs a bad compression", "[arraysandstrings][chapterone]" ) {
+TEST_CASE( "Function `bad_compression` performs a bad compression",
+           "[arraysandstrings][chapterone]" ) {
   SECTION( "Normal string compresses as expected" ) {
     std::string uncompressed = "aabbbcc";
-    std::string act_compressed = bad_compression(uncompressed);
+    std::string act_compressed = BadCompression(uncompressed);
     std::string exp_compressed = "a2b3c2";
     REQUIRE( act_compressed == exp_compressed );
   }
@@ -50,17 +53,18 @@ TEST_CASE( "Function `bad_compression` performs a bad compression", "[arraysands
       "iiihsnwnwwwjfbche",
       "qwertyqwertyqqwweerrttyy"
     };
-    for (const std::string& str : test_cases) {
-      REQUIRE( bad_compression(str).length() <= str.length() );
+    for (const std::string &str : test_cases) {
+      REQUIRE( BadCompression(str).length() <= str.length() );
     }
   }
   SECTION( "No invalid characters are present, most importantly numbers" ) {
     std::string str = "aa4bbb9cc";
-    REQUIRE_THROWS_WITH( bad_compression(str), "Invalid character in string." );
+    REQUIRE_THROWS_WITH( BadCompression(str), "Invalid character in string." );
   }
 }
 
-TEST_CASE( "Function `rotate_img` rotates a matrix 90degrees", "[arraysandstrings][chapterone]" ) {
+TEST_CASE( "Function `rotate_img` rotates a matrix 90degrees",
+           "[arraysandstrings][chapterone]" ) {
   SECTION( "Small odd matrix is rotated as expected" ) {
     int original_image[3][3] = {
       {1,1,2},
@@ -72,7 +76,7 @@ TEST_CASE( "Function `rotate_img` rotates a matrix 90degrees", "[arraysandstring
       {3,5,1},
       {3,2,2}
     };
-    rotate_img(original_image, 3);
+    RotateImg(original_image, 3);
     bool are_equal = true;
     for (size_t row = 0; row < 3; ++row) {
       for (size_t col = 0; col < 3; ++col) {
@@ -100,7 +104,7 @@ TEST_CASE( "Function `rotate_img` rotates a matrix 90degrees", "[arraysandstring
       {0,9,8,7,6,5},
       {1,0,9,8,7,6}
     };
-    rotate_img(original_image, 6);
+    RotateImg(original_image, 6);
     bool are_equal = true;
     for (size_t row = 0; row < 6; ++row) {
       for (size_t col = 0; col < 6; ++col) {
@@ -122,10 +126,10 @@ TEST_CASE( "Function `rotate_img` rotates a matrix 90degrees", "[arraysandstring
       {4,5,2},
       {4,3,3}
     };
-    rotate_img(original_image, 3);
-    rotate_img(original_image, 3);
-    rotate_img(original_image, 3);
-    rotate_img(original_image, 3);
+    RotateImg(original_image, 3);
+    RotateImg(original_image, 3);
+    RotateImg(original_image, 3);
+    RotateImg(original_image, 3);
     bool are_equal = true;
     for (size_t row = 0; row < 3; ++row) {
       for (size_t col = 0; col < 3; ++col) {
@@ -138,7 +142,8 @@ TEST_CASE( "Function `rotate_img` rotates a matrix 90degrees", "[arraysandstring
   }
 }
 
-TEST_CASE( "Function `zero_intercepts` zeros rows and cols which contain a zero", "[arraysandstrings][chapterone]" ) {
+TEST_CASE( "Function `zero_intercepts` zeros rows and cols which contain a zero",
+           "[arraysandstrings][chapterone]" ) {
   SECTION( "Intercepts are zeroed as expected" ) {
     int matrix[6][6] = {
       {1,2,3,4,5,6},
@@ -156,7 +161,7 @@ TEST_CASE( "Function `zero_intercepts` zeros rows and cols which contain a zero"
       {0,0,0,0,0,0},
       {0,0,0,0,0,0}
     };
-    zero_intercepts(matrix);
+    ZeroIntercepts(matrix);
     bool are_equal = true;
     for (size_t row = 0; row < 6; ++row) {
       for (size_t col = 0; col < 6; ++col) {
