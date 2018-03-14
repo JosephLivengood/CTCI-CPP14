@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		605CA49D2043D73F009DE616 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 605CA49C2043D73F009DE616 /* main.cpp */; };
+		60B7D0BD2057568000AB2FF6 /* stacks-and-queues.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 60B7D0BC2057568000AB2FF6 /* stacks-and-queues.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,8 @@
 		607FEF4D2048E82700B21CAE /* arrays-and-strings-tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "arrays-and-strings-tests.cpp"; sourceTree = "<group>"; };
 		607FEF4F2048E84700B21CAE /* linkedlists-tests.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "linkedlists-tests.cpp"; sourceTree = "<group>"; };
 		6083E8AC205233C60074570B /* catch.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = catch.hpp; sourceTree = "<group>"; };
+		60B7D0BB2057563F00AB2FF6 /* stacks-and-queues-tests.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; path = "stacks-and-queues-tests.cpp"; sourceTree = "<group>"; };
+		60B7D0BC2057568000AB2FF6 /* stacks-and-queues.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = "stacks-and-queues.cpp"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +77,7 @@
 			children = (
 				607FEF432048E6BD00B21CAE /* arrays-and-strings.cpp */,
 				607FEF452048E6D200B21CAE /* linkedlists.cpp */,
+				60B7D0BC2057568000AB2FF6 /* stacks-and-queues.cpp */,
 			);
 			path = src;
 			sourceTree = "<group>";
@@ -84,6 +88,7 @@
 				607FEF4D2048E82700B21CAE /* arrays-and-strings-tests.cpp */,
 				607FEF4F2048E84700B21CAE /* linkedlists-tests.cpp */,
 				6083E8AC205233C60074570B /* catch.hpp */,
+				60B7D0BB2057563F00AB2FF6 /* stacks-and-queues-tests.cpp */,
 			);
 			path = test;
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60B7D0BD2057568000AB2FF6 /* stacks-and-queues.cpp in Sources */,
 				605CA49D2043D73F009DE616 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

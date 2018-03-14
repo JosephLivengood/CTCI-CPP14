@@ -1,6 +1,5 @@
 #include <cstring>
 #include <string>
-#include <exception>
 
 //  1.1
 //  Implement an algorithm to determine if a string has all unique
