@@ -4,35 +4,71 @@
 
 TEST_CASE( "Class `Stack` is a functioning stack",
           "[stacksandqueues][chapterthree]" ) {
-  Stack<int> stack { (int []){ 5,4,3 }, 3 };
-  Stack<char> charstack;
   
-  SECTION( "Popping a seeded stack functions and is in order" ) {
-    REQUIRE( stack.Pop() == 3 );
-    REQUIRE( stack.Pop() == 4 );
-    REQUIRE( stack.Pop() == 5 );
-  
-    SECTION( "Popping an empty stack results in exeception" ) {
-      REQUIRE_THROWS_WITH( stack.Pop(), "Stack is empty" );
-      REQUIRE_THROWS_WITH( charstack.Pop(), "Stack is empty" );
-  
-      SECTION( "Peeking an empty stack results in exeception" ) {
-        REQUIRE_THROWS_WITH( stack.Peek(), "Stack is empty" );
-        REQUIRE_THROWS_WITH( charstack.Peek(), "Stack is empty" );
+  SECTION( "Integer seeded stack works as expected" ) {
+    int seed[] { 5,4,3 };
+    Stack<int> stack { seed, 3 };
+    REQUIRE_FALSE( stack.isEmpty() );
+    
+    SECTION( "Top gives next element without removing" ) {
+      REQUIRE( stack.top() == 3 );
+      REQUIRE( stack.top() == 3 );
       
-        SECTION( "Pushing does not return or throw anything" ) {
-          REQUIRE_NOTHROW( stack.Push(9) );
-          REQUIRE_NOTHROW( stack.Push(3) );
-          REQUIRE_NOTHROW( charstack.Push('a') );
+      SECTION( "Pop will remove the top element and is exception safe" ) {
+        REQUIRE_NOTHROW( stack.pop() );
+        REQUIRE( stack.top() == 4 );
+        REQUIRE_NOTHROW( stack.pop() );
+        REQUIRE( stack.top() == 5 );
+        REQUIRE_NOTHROW( stack.pop() );
+        REQUIRE( stack.isEmpty() );
+        REQUIRE_NOTHROW( stack.pop() );
         
-          SECTION( "Peeking functions as expected" ) {
-            REQUIRE( stack.Peek() == 3 );
-            REQUIRE( charstack.Peek() == 'a' );
+        SECTION( "Checking the top of an empty stack throws exeception" ) {
+          REQUIRE( stack.isEmpty() );
+          REQUIRE_THROWS_WITH( stack.top(), "Stack is empty" );
           
-            SECTION( "Popping pushed elements functions as expected" ) {
-              REQUIRE( stack.Pop() == 3 );
-              REQUIRE( charstack.Pop() == 'a' );
-            }
+          SECTION( "Pushing adds to the stack in correctly and in order" ) {
+            REQUIRE_NOTHROW( stack.push(7) );
+            REQUIRE_NOTHROW( stack.push(1) );
+            REQUIRE( stack.top() == 1 );
+            REQUIRE_NOTHROW( stack.pop() );
+            REQUIRE( stack.top() == 7 );
+          }
+        }
+      }
+    }
+  }
+  SECTION( "Char unseeded stack works as expected" ) {
+    Stack<char> stack;
+    REQUIRE( stack.isEmpty() );
+    REQUIRE_NOTHROW( stack.push('a') );
+    REQUIRE_NOTHROW( stack.push('b') );
+    REQUIRE_NOTHROW( stack.push('c') );
+    REQUIRE_FALSE( stack.isEmpty() );
+    
+    SECTION( "Top gives next element without removing" ) {
+      REQUIRE( stack.top() == 'c' );
+      REQUIRE( stack.top() == 'c' );
+      
+      SECTION( "Pop will remove the top element and is exception safe" ) {
+        REQUIRE_NOTHROW( stack.pop() );
+        REQUIRE( stack.top() == 'b' );
+        REQUIRE_NOTHROW( stack.pop() );
+        REQUIRE( stack.top() == 'a' );
+        REQUIRE_NOTHROW( stack.pop() );
+        REQUIRE( stack.isEmpty() );
+        REQUIRE_NOTHROW( stack.pop() );
+        
+        SECTION( "Checking the top of an empty stack throws exeception" ) {
+          REQUIRE( stack.isEmpty() );
+          REQUIRE_THROWS_WITH( stack.top(), "Stack is empty" );
+          
+          SECTION( "Pushing adds to the stack in correctly and in order" ) {
+            REQUIRE_NOTHROW( stack.push('z') );
+            REQUIRE_NOTHROW( stack.push('y') );
+            REQUIRE( stack.top() == 'y' );
+            REQUIRE_NOTHROW( stack.pop() );
+            REQUIRE( stack.top() == 'z' );
           }
         }
       }
